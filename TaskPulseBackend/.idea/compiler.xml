@@ -8,7 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="GatewayService" />
       </profile>
-      <profile name="Annotation profile for TaskService" enabled="true">
+      <profile name="Annotation profile for NotificationService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -16,6 +16,16 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
         <module name="UserService" />
+        <module name="NotificationService" />
+      </profile>
+      <profile name="Annotation profile for TaskService" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
         <module name="TaskService" />
       </profile>
     </annotationProcessing>
@@ -23,6 +33,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="GatewayService" options="-parameters" />
+      <module name="NotificationService" options="-parameters" />
       <module name="TaskService" options="-parameters" />
       <module name="UserService" options="-parameters" />
     </option>
