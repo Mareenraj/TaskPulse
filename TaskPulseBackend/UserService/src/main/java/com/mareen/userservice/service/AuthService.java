@@ -15,6 +15,7 @@ import com.mareen.userservice.repository.RoleRepository;
 import com.mareen.userservice.repository.UserRepository;
 import com.mareen.userservice.security.jwt.JwtTokenProvider;
 import jakarta.transaction.Transactional;
+import org.springframework.security.access.expression.SecurityExpressionHandler;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,6 +23,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class AuthService {
@@ -31,14 +34,16 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
     private final UserDetailsService userDetailsService;
+    private final SecurityExpressionHandler securityExpressionHandler;
 
-    public AuthService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserDetailsService userDetailsService) {
+    public AuthService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserDetailsService userDetailsService, SecurityExpressionHandler securityExpressionHandler) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userDetailsService = userDetailsService;
+        this.securityExpressionHandler = securityExpressionHandler;
     }
 
     @Transactional
@@ -53,6 +58,9 @@ public class AuthService {
         user.setUserName(signUpRequest.getUserName());
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        user.setCreatedDate(currentDateTime);
+        user.setLastModifiedDate(currentDateTime);
 
         Role userRole = roleRepository.findByRole(RoleEnum.ROLE_USER)
                 .orElseThrow(() -> new IllegalStateException("Default role not configured"));
