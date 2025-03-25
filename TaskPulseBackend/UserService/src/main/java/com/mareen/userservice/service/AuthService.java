@@ -1,6 +1,5 @@
 package com.mareen.userservice.service;
 
-import com.mareen.userservice.records.RoleAssignmentRequest;
 import com.mareen.userservice.dto.SignInRequest;
 import com.mareen.userservice.dto.SignUpRequest;
 import com.mareen.userservice.dto.TokenResponse;
@@ -11,6 +10,7 @@ import com.mareen.userservice.exception.UserAlreadyExistException;
 import com.mareen.userservice.exception.UserNotExistException;
 import com.mareen.userservice.model.Role;
 import com.mareen.userservice.model.User;
+import com.mareen.userservice.records.RoleAssignmentRequest;
 import com.mareen.userservice.repository.RoleRepository;
 import com.mareen.userservice.repository.UserRepository;
 import com.mareen.userservice.security.jwt.JwtTokenProvider;

@@ -1,6 +1,5 @@
 package com.mareen.userservice.controller;
 
-import com.mareen.userservice.records.RoleAssignmentRequest;
 import com.mareen.userservice.dto.SignInRequest;
 import com.mareen.userservice.dto.SignUpRequest;
 import com.mareen.userservice.dto.TokenResponse;
@@ -9,6 +8,7 @@ import com.mareen.userservice.exception.RoleNotExistException;
 import com.mareen.userservice.exception.UserAlreadyExistException;
 import com.mareen.userservice.exception.UserNotExistException;
 import com.mareen.userservice.model.User;
+import com.mareen.userservice.records.RoleAssignmentRequest;
 import com.mareen.userservice.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
