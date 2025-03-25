@@ -1,6 +1,6 @@
 package com.mareen.userservice.controller;
 
-import com.mareen.userservice.dto.RoleAssignmentRequest;
+import com.mareen.userservice.records.RoleAssignmentRequest;
 import com.mareen.userservice.dto.SignInRequest;
 import com.mareen.userservice.dto.SignUpRequest;
 import com.mareen.userservice.dto.TokenResponse;
